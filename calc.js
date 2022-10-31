@@ -1,9 +1,9 @@
 function updatePrice() {
   // Находим select по имени в DOM.
+  let n = document.getElementById('n');
   let s = document.getElementsByName("prodType");
   let select = s[0];
   let price = 0;
-  let k = document.getElementsByName("kol");
   let prices = getPrices();
   let priceIndex = parseInt(select.value) - 1;
   if (priceIndex >= 0) {
@@ -35,7 +35,13 @@ function updatePrice() {
       }
     }
   });
-  document.getElementById("answer").value = price*k[0].value + " рублей";
+  let re = /\D/;
+    if (n.value.match(re) !== null) {
+        alert("Ошибка! Введите корректное число");
+    }
+    else{
+      document.getElementById("answer").value = price*n.value + " рублей";
+    }
 }
 function getPrices() {
   return {
@@ -60,16 +66,12 @@ window.addEventListener('DOMContentLoaded', function (event) {
   let select = s[0];
   // Назначаем обработчик на изменение select.
   select.addEventListener("change", function (event) {
-    let target = event.target;
-    console.log(target.value);
     updatePrice();
   });
   // Назначаем обработчик радиокнопок.  
   let radios = document.getElementsByName("prodOptions");
   radios.forEach(function (radio) {
     radio.addEventListener("change", function (event) {
-      let r = event.target;
-      console.log(r.value);
       updatePrice();
     });
   });
@@ -77,9 +79,6 @@ window.addEventListener('DOMContentLoaded', function (event) {
   let checkboxes = document.querySelectorAll("#checkboxes input");
   checkboxes.forEach(function (checkbox) {
     checkbox.addEventListener("change", function (event) {
-      let c = event.target;
-      console.log(c.name);
-      console.log(c.value);
       updatePrice();
     });
   });
