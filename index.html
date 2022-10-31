@@ -13,34 +13,23 @@
     <h1>Калькулятор стоимости товара</h1>
   </header>
   <form>
+    Введите количествово товара:
+    <input type="text" id="n" value="0" onKeyPress="cislo()"><br>
     Выберите товар и его свойства:<br>
     <select name="prodType">
-      <option value="1">Белая рубашка</option>
+      <option checked="checked" value="1">Белая рубашка</option>
       <option value="2">Брюки</option>
       <option value="3">Футболка</option>
     </select><br>
     <div id="radios">
-      <label><input type="radio" name="prodOptions" value="option1"> Белые</label>
+      <label><input type="radio" checked="checked" name="prodOptions" value="option1"> Белые</label>
       <label><input type="radio" name="prodOptions" value="option2"> Бежевые</label>
       <label><input type="radio" name="prodOptions" value="option3"> Чёрные</label>
     </div><br>
     <div id="checkboxes">
-      <label><input type="checkbox" name="prop1"> Однотонная</label>
+      <label><input type="checkbox" checked="checked" name="prop1"> Однотонная</label>
       <label><input type="checkbox" name="prop2"> С принтом</label>
     </div>
-    Введите количество товара:<br>
-    <select name="kol">
-      <option value="1" selected="selected">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select><br>
     Цена товара:<input name="field-answer" id="answer" type="text" value="">
   </form>
 </body>
