@@ -1,5 +1,5 @@
 function updatePrice() {
-  let n = document.getElementById('n');
+  let n = document.getElementById("n");
   let s = document.getElementsByName("prodType");
   let select = s[0];
   let price = 0;
@@ -55,9 +55,6 @@ function getPrices() {
   };
 }
 window.addEventListener('DOMContentLoaded', function (event) {
-  // Скрываем радиокнопки
-  /*let radioDiv = document.getElementById("radios");
-  radioDiv.style.display = "none";*/
   let s = document.getElementsByName("prodType");
   let select = s[0];
   // Назначаем обработчик изменения количества товара
@@ -65,7 +62,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
   n.addEventListener("change",function(event){
     updatePrice();
   })
-  // Назначаем обработчик на изменение типа товара
+  // Назначаем обработчик изменения типа товара
   select.addEventListener("change", function (event) {
     updatePrice();
   });
