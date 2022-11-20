@@ -1,5 +1,4 @@
 function updatePrice() {
-  // Находим select по имени в DOM.
   let n = document.getElementById('n');
   let s = document.getElementsByName("prodType");
   let select = s[0];
@@ -9,10 +8,10 @@ function updatePrice() {
   if (priceIndex >= 0) {
     price = prices.prodTypes[priceIndex];
   }
-  // Скрываем или показываем радиокнопки.
+  // Скрываем или показываем радиокнопки
   let radioDiv = document.getElementById("radios");
   radioDiv.style.display = (select.value == ("2" || "1") ? "block" : "none");
-  // Смотрим какая товарная опция выбрана.
+  //Свойства второго товара
   let radios = document.getElementsByName("prodOptions");
   radios.forEach(function (radio) {
     if (radio.checked) {
@@ -22,10 +21,10 @@ function updatePrice() {
       }
     }
   });
-  // Скрываем или показываем чекбоксы.
+  // Скрываем или показываем чекбоксы
   let checkDiv = document.getElementById("checkboxes");
   checkDiv.style.display = (select.value == "3" ? "block" : "none");
-  // Смотрим какие товарные свойства выбраны.
+  //Свойства третьего товара
   let checkboxes = document.querySelectorAll("#checkboxes input");
   checkboxes.forEach(function (checkbox) {
     if (checkbox.checked) {
@@ -47,35 +46,37 @@ function getPrices() {
   return {
     prodTypes: [1000, 2000, 500],
     prodOptions: {
-      option1: 0,
       option2: -200,
       option3: -500,
     },
     prodProperties: {
-      prop1: 0,
       prop2: 100,
     }
   };
 }
 window.addEventListener('DOMContentLoaded', function (event) {
-  // Скрываем радиокнопки.
-  let radioDiv = document.getElementById("radios");
-  radioDiv.style.display = "none";
-  // Находим select по имени в DOM.
+  // Скрываем радиокнопки
+  /*let radioDiv = document.getElementById("radios");
+  radioDiv.style.display = "none";*/
   let s = document.getElementsByName("prodType");
   let select = s[0];
-  // Назначаем обработчик на изменение select.
+  // Назначаем обработчик изменения количества товара
+  let n = document.getElementById('n');
+  n.addEventListener("change",function(event){
+    updatePrice();
+  })
+  // Назначаем обработчик на изменение типа товара
   select.addEventListener("change", function (event) {
     updatePrice();
   });
-  // Назначаем обработчик радиокнопок.  
+  // Назначаем обработчик радиокнопок  
   let radios = document.getElementsByName("prodOptions");
   radios.forEach(function (radio) {
     radio.addEventListener("change", function (event) {
       updatePrice();
     });
   });
-  // Назначаем обработчик радиокнопок.  
+  // Назначаем обработчик чекбокса  
   let checkboxes = document.querySelectorAll("#checkboxes input");
   checkboxes.forEach(function (checkbox) {
     checkbox.addEventListener("change", function (event) {
